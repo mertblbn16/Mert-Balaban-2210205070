@@ -1,0 +1,27 @@
+struct Node {
+    int data;
+    struct Node *prev, *next;
+};
+
+void traverse(struct Node* head) {
+    while(head) {
+        printf("%d ", head->data);
+        head = head->next;
+    }
+}
+
+void insertAfter(struct Node* p, int d) {
+    struct Node* n = malloc(sizeof(struct Node));
+    n->data=d;
+    n->next=p->next;
+    n->prev=p;
+    if(p->next) p->next->prev=n;
+    p->next=n;
+}
+
+void deleteNode(struct Node** head, struct Node* del) {
+    if(*head==del) *head=del->next;
+    if(del->prev) del->prev->next=del->next;
+    if(del->next) del->next->prev=del->prev;
+    free(del);
+}
