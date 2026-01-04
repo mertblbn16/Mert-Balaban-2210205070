@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+int tree[10];
+
+int left(int i){ return 2*i+1; }
+int right(int i){ return 2*i+2; }
+
+int main() {
+    tree[0]=10;
+    tree[left(0)]=5;
+    tree[right(0)]=20;
+
+    printf("%d %d %d", tree[0], tree[1], tree[2]);
+    return 0;
+}
